@@ -14,7 +14,7 @@ const todoReducer = (state = initValue, action) => {
             }
         case 'todo/deleteTodo':
             const newJobs = [...state.jobs]
-            newJobs.splice(action.payload, 1)
+            newJobs.splice(action.payload.index, 1)
             return {
                 ...state,
                 jobs: newJobs

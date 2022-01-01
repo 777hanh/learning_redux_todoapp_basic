@@ -25,13 +25,17 @@ const Todo = () => {
     }
     ////action delete job
     const handleClickDeleteJob = (index) => {
-        dispatch(DELETE_JOB(
+        // return console.log(index)
+        dispatch(DELETE_JOB({
             index
+        }
         ))
     }
 
     //use useSelector to get data from store
     const jobs = useSelector(jobListSelector)
+    const jobsss = useSelector(state => state)
+    // console.log(jobsss)
     // const jobs = useSelector((state) => console.log(state))
     // console.log(jobs)
 
@@ -44,7 +48,9 @@ const Todo = () => {
                 {jobs.map((job, index) =>
                     <li key={index}>
                         {job}
-                        <span onClick={()=> dispatch(DELETE_JOB(index))} > &times;</span>
+                        {/* <span onClick={() => dispatch(DELETE_JOB(index))} > &times;</span> */}
+                        <span onClick={handleClickDeleteJob.bind(this,index)} > &times;</span>
+                        {/* <span onClick={()=>handleClickDeleteJob(index)} > &times;</span> */}
                     </li>
                 )}
             </ul>
